@@ -18,13 +18,6 @@ RUN mkdir -p /src; cd /src; \
     tar zxf $RSYNC.tar.gz && cd $RSYNC; \
     ./configure CFLAGS="-static"; \
     make && make install;
-    
-# Rebuild rsync statically linked
-#RUN mkdir -p /src; cd /src; \
-#    cd $(apt source rsync 2>&1 | grep extracting | sed -e 's/^.*in.//'); \
-#    sed -i 's/\(^CFLAGS.*Wall.\)/\1-static/' debian/rules; \
-#    dpkg-buildpackage -us -uc; \
-#    cp debian/tmp/usr/bin/rsync /src/rsync-static;
 
 FROM alpine:3.13
 COPY --from=rsync /usr/local/bin/rsync /usr/bin/rsync
