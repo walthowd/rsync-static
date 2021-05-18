@@ -9,7 +9,7 @@ RUN sed -i 's/^#.deb-src/deb-src/g' /etc/apt/sources.list;\
     apt update;\
     apt-get -fqqy install dpkg-dev; \
     apt-get -fqqy build-dep rsync; \
-    apt-get -fqqy install wget gcc g++ gawk autoconf automake python3-cmarkgfm ;\
+    apt-get -fqqy install wget gcc g++ gawk autoconf automake python3-cmarkgfm; \
     apt-get -fqqy install acl liblz4-dev libacl1-dev attr libattr1-dev libxxhash-dev libzstd-dev libssl-dev;
 
 # Build rsync from source
